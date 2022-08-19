@@ -11,4 +11,5 @@
 |
 */
 
-Route::get('/posts', 'PostController@index');
+// 最初にコントローラーを参照するように変更する
+Route::get('/', 'PostController@index');

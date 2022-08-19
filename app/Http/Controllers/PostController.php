@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+//参照するモデルを追加する
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,10 @@ class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return $post->get();
+        /**
+         * データベースから受け取ったデータをviewに渡す
+         * postsにはpost1,post2,....のようにデータが渡される
+         */
+        return view('posts/index')->with(['posts' => $post->get()]);
     }
 }
