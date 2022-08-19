@@ -1,2 +1,2 @@
-# origin
+# levatech
 My first repository on GitHub
