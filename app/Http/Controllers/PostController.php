@@ -20,6 +20,11 @@ class PostController extends Controller
          * データベースから受け取ったデータをviewに渡す
          * postsにはpost1,post2,....のようにデータが渡される
          */
-        return view('posts/index')->with(['posts' => $post->getpaginateByLimit()]);
+        return view('posts/index')->with(['posts' => $post->getpaginateByLimit(2)]);
+    }
+    
+    public function show(Post $post)
+    {
+        return view('posts/show')->with(['post' => $post]);
     }
 }
