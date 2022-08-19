@@ -13,3 +13,5 @@
 
 // 最初にコントローラーを参照するように変更する
 Route::get('/', 'PostController@index');
+// LaravelのDI機能を使うために{post}としている
+Route::get('/posts/{post}', 'PostController@show');

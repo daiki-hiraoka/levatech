@@ -14,7 +14,9 @@
             @foreach ($posts as $post)
                 {{--記事一つ一つのクラスを作成--}}
                 <div class = 'post'>
-                    <h2 class = 'title'>id={{ $post->id }} {{ $post->title }}</h2>
+                    <h2 class = 'title'>
+                        <a href='/posts/{{ $post->id }}'>{{ $post->title }}</a>
+                    </h2>
                     <p class = 'body'>{{ $post->body }}</p>
                     <p class ='body'>この文章は{{ $post->created_at }}に作成された。</p>
                 </div>
