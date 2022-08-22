@@ -16,6 +16,7 @@
             <p class ='updated_at'>{{ $post->created_at }}</p>
         </div>
         {{-- 記事一覧に戻るリンク --}}
+        <div class = 'edit'>[<a href='/posts/{{ $post->id }}/edit'>edit</a>]</div>
         <div class = 'back'>[<a href='/'>back</a>]</div>
     </body>
 </html>
