@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    // fill&saveで保存できる内容を記述しておく
+    // この記述に満たされる内容でないと保存することができない。
+    protected $fillable = [
+        'title',
+        'body'
+    ];
+  
+
     // 10件のみを表示する関数
     public function getByLimit(int $limit_count = 10)
     {

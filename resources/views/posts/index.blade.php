@@ -9,6 +9,7 @@
     </head>
     <body>
         <h1>Blog Name</h1>
+        [<a href='/posts/create'>create</a>]
         {{--記事一覧のクラスを作成--}}
         <div class = 'posts'>
             @foreach ($posts as $post)
