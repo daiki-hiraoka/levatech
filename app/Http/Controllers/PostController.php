@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 //参照するモデルを追加する
 use App\Post;
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 /**
  * Post一覧を表示する
@@ -33,7 +33,7 @@ class PostController extends Controller
         return view('posts/create');
     }
 
-    public function store(Request $request, Post $post)
+    public function store(PostRequest $request, Post $post)
     {
         $input = $request['post'];
         // fillした後にsaveでSQLのinsertと同じクエリになる
