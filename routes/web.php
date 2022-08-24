@@ -20,5 +20,7 @@ Route::get('/posts/{post}/edit', 'PostController@edit');
 
 // ブログ投稿作成画面で保存ボタンを押されたときのルーティングの定義
 Route::post('/posts', 'PostController@store');
-
+// 編集ボタンを押されたときのルーティングの定義
 Route::put('/posts/{post}', 'PostController@update');
+// ブログ詳細画面で削除ボタンを押されたときのルーティングの定義
+Route::delete('/posts/{post}', 'PostController@delete');
