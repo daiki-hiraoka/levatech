@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    // delete()の処理をDELETEからUPDATEに変更する。
+    // deleted_atに値が設定され削除扱いになり検索に引っ掛からなくなる。
+    use SoftDeletes;
     // fill&saveで保存できる内容を記述しておく
     // この記述に満たされる内容でないと保存することができない。
     protected $fillable = [
