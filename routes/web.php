@@ -18,7 +18,8 @@ Route::group(['middleware' => ['auth']], function(){
     // LaravelのDI機能を使うために{post}としている
     Route::get('/posts/{post}', 'PostController@show');
     Route::get('/posts/{post}/edit', 'PostController@edit');
-    Route::get('category/{category}', 'CategoryController@index');
+    Route::get('/category/{category}', 'CategoryController@index');
+    Route::get('/user', 'UserController@index');
     
     // ブログ投稿作成画面で保存ボタンを押されたときのルーティングの定義
     Route::post('/posts', 'PostController@store');

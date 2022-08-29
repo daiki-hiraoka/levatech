@@ -17,13 +17,19 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
-        'category_id'
+        'category_id',
+        'user_id'
     ];
     
     // 1対多の従テーブルなので主テーブルを単数形で記述する
     public function category()
     {
         return $this->belongsTo('App\Category');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
   
 
@@ -44,7 +50,7 @@ class Post extends Model
          * 返されるのはPaginationインスタンス
          * Collectionインスタンスとほとんど扱いが変わらない
          */
-        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with(['category', 'user'])->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
     
