@@ -9,21 +9,28 @@
     </head>
     <body>
         <h1>Blog Name</h1>
+        
+        <div class = 'edit'>[<a href='/posts/{{ $post->id }}/edit'>edit</a>]</div>
+        
+        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline" onsubmit="return dialogDelete()">
+            @csrf
+            @method('DELETE')
+            <button type="submit">delete</button>
+        </form>
+        
         {{--記事一つ一つのクラスを作成--}}
         <div class = 'post'>
             <h2 class = 'title'>{{ $post->title }}</h2>
             <p class = 'body'>{{ $post->body }}</p>
             <p class ='updated_at'>{{ $post->created_at }}</p>
         </div>
+        
+        <a href="/category/{{ $post->category->id }}">{{ $post->category->name }}</a>
+        
         {{-- 記事一覧に戻るリンク --}}
-        <div class = 'edit'>[<a href='/posts/{{ $post->id }}/edit'>edit</a>]</div>
-        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline" onsubmit="return dialogDelete()">
-            @csrf
-            @method('DELETE')
-            <button type="submit">delete</button>
-        </form>
         <!--<p id='txt'></p>-->
         <div class = 'back'>[<a href='/'>back</a>]</div>
+        
         <script>
             function dialogDelete(){
                 'use strict';

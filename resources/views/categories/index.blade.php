@@ -11,6 +11,7 @@
         <h1>Blog Name</h1>
         
         [<a href='/posts/create'>create</a>]
+        [<a href='/'>top</a>]
         
         {{--記事一覧のクラスを作成--}}
         <div class = 'posts'>
@@ -20,7 +21,7 @@
                     <h2 class = 'title'>
                         <a href='/posts/{{ $post->id }}'>{{ $post->title }}</a>
                     </h2>
-                    <a href="/category/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                    <a href="">{{ $post->category->name }}</a>
                     <p class = 'body'>{{ $post->body }}</p>
                 </div>
             @endforeach

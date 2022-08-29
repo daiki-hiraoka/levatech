@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,12 +16,19 @@ class Post extends Model
     // この記述に満たされる内容でないと保存することができない。
     protected $fillable = [
         'title',
-        'body'
+        'body',
+        'category_id'
     ];
+    
+    // 1対多の従テーブルなので主テーブルを単数形で記述する
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
   
 
     // 10件のみを表示する関数
-    public function getByLimit(int $limit_count = 10)
+    public function getByLimit(int $limit_count = 5)
     {
         /**
          * updated_atで降順に並べた後、limitで制限をかける
@@ -30,12 +38,13 @@ class Post extends Model
     }
     
     // ペジネーションを用いてデータベースのデータを表示する方法
-    public function getpaginateByLimit(int $limit_count = 10)
+    public function getpaginateByLimit(int $limit_count = 5)
     {
         /**
          * 返されるのはPaginationインスタンス
          * Collectionインスタンスとほとんど扱いが変わらない
          */
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
+    
