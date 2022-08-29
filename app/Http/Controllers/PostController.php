@@ -33,6 +33,7 @@ class PostController extends Controller
     {
         // create.blade.phpでnameに定義されているpostを参照している
         $input = $request['post'];
+        $input += ['user_id' => $request->user()->id];
         // fillした後にsaveでSQLのinsertと同じクエリになる
         $post->fill($input)->save();
         // .は文字列をつなげる（/posts/{id} という構造になっている)
@@ -48,6 +49,7 @@ class PostController extends Controller
     {
         // create.blade.phpでnameに定義されているpostを参照している
         $input_post = $request['post'];
+        $input_post += ['user_id' => $request->user()->id];
         $post->fill($input_post)->save();
         return redirect('/posts/' . $post->id);
     }

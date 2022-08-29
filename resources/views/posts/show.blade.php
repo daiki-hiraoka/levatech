@@ -24,6 +24,7 @@
         {{--記事一つ一つのクラスを作成--}}
         <div class = 'post'>
             <h2 class = 'title'>{{ $post->title }}</h2>
+            <a href=""><small class='user'> {{ $post->user->name }} <br></small></a>
             <p class = 'body'>{{ $post->body }}</p>
             <p class ='updated_at'>{{ $post->created_at }}</p>
         </div>
